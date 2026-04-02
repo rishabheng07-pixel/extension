@@ -1,0 +1,52 @@
+{
+  "name": "Tracky",
+  "displayName": "Tracky",
+  "description": "Track your daily coding time with a streak system. Automatic idle detection, persistent stats, and achievement badges.",
+  "version": "4.5.0",
+  "publisher": "codestreak",
+  "icon": "image/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rishabh/codestreak"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codestreak.showStats",
+        "title": "CodeStreak: Show Coding Stats"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.3.8",
+    "esbuild": "^0.19.11",
+    "eslint": "^8.55.0",
+    "typescript": "^5.3.3",
+    "vsce": "^2.15.0"
+  },
+  "dependencies": {}
+}
